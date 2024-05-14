@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "/beef_service";
+
+import "google/api/annotations.proto";
+
+service BeefService {
+    rpc GetBeefSummary(BeefRequest) returns (BeefResponse) {
+        option (google.api.http) = {
+            get: "/beef/summary"
+        };
+    }
+}
+
+message BeefRequest {}
+
+message BeefResponse {
+    map<string, int32> word_counts = 1;
+}
